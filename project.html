@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text Stats</title>
+  <style>
+    body {
+      background: #e0f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px;
+    }
+
+    .box {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    textarea {
+      width: 100%;
+      height: 160px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #bbb;
+      resize: none;
+    }
+
+    .stats {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .stats span {
+      background: #b2ebf2;
+      padding: 8px 14px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Text Analyzer 📊</h1>
+    <textarea id="input-text" placeholder="Write something..."></textarea>
+    <div class="stats">
+      <span>Words: <strong id="word-count">0</strong></span>
+      <span>Characters: <strong id="char-count">0</strong></span>
+    </div>
+  </div>
+
+  <script>
+    const textarea = document.getElementById("input-text");
+    const wordCount = document.getElementById("word-count");
+    const charCount = document.getElementById("char-count");
+
+    textarea.addEventListener("input", () => {
+      const text = textarea.value;
+      const trimmedText = text.trim();
+      const words = trimmedText.length > 0 ? trimmedText.split(/\s+/).length : 0;
+
+      wordCount.textContent = words;
+      charCount.textContent = text.length;
+    });
+  </script>
+</body>
+</html>
